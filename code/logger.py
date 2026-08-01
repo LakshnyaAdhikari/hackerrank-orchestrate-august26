@@ -1,9 +1,11 @@
 import os
 import datetime
 
+# Compute paths dynamically relative to repository root
+CODE_DIR = os.path.dirname(os.path.abspath(__file__))
+REPO_ROOT = os.path.dirname(CODE_DIR)
 LOG_DIR = os.path.expanduser(r'~\hackerrank_orchestrate_august26')
 LOG_PATH = os.path.join(LOG_DIR, 'log.txt')
-REPO_ROOT = r'C:\Users\Lakshnya\Downloads\hackerrank-orchestrate-august26'
 
 def log_action(title: str, user_prompt: str, agent_response: str, actions: list, tool_name: str = "Antigravity"):
     """
@@ -46,5 +48,5 @@ parent_agent=none
         print(f"Warning: Failed to write to compliance log: {e}")
 
 if __name__ == "__main__":
-    log_action("Logger Initialization", "Init logger", "Logger module built successfully.", ["Created code/logger.py"])
-    print(f"Logger test passed. Logging to {LOG_PATH}")
+    log_action("Logger Check", "Check logger paths", "Logger path dynamically resolved.", ["Validated logger.py"])
+    print(f"Logger test passed. Dynamic Repo Root: {REPO_ROOT}")
